@@ -1,16 +1,19 @@
-pytest capture DeprecatedWarnings
-=================================
+## pytest capture Warnings
 
-This is a pytest plugin to collect and print a summary of all
-DeprecatedWarnings encountered during test execution and save them in a file.
+This is a pytest plugin to collect and print a summary of all the warnings encountered during test execution and save them in a file.
 
-![screenshot.png](screenshot.png)
 
-Installation and usage
-======================
+# Installation
 
-Simply:
+    pip install pytest-capture-warnings
 
-    pip install pytest-capture-deprecatedwarnings
+# Usage 
 
-And it will automatically be added to your pytest output.
+    pytest --output <output_file> <file_to_test>
+
+
+# Flake8 Format
+    
+The output file is formatted on a flake8 format
+    
+    <filename/path>:<line number>:<character number>:<warning message>
