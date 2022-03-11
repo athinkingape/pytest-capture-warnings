@@ -4,7 +4,7 @@
 from setuptools import setup
 
 
-setup(name="pytest-capture-deprecatedwarnings",
+setup(name="pytest-capture-warnings",
       version='0.5.1',
       author='Laurent Peuch',
       author_email='cortex@worlddomination.be',
