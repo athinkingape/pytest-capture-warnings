@@ -144,12 +144,13 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config=None):
             pass
 
 
+DEFAULT_OUTPUT = "warnings.txt"
 def pytest_addoption(parser):
     parser.addoption(
         "--output",
         action="store",
         dest="outputpath",
-        default="warnings.txt",
+        default=DEFAULT_OUTPUT,
     )
 
 
@@ -159,3 +160,5 @@ output_path = None
 def pytest_configure(config):
     global output_path
     output_path = config.getoption("outputpath")
+    if 'CAPTURE_WARNINGS_OUTPUT' in os.environ and output_path != DEFAULT_OUTPUT:
+        output_path = os.environ['CAPTURE_WARNINGS_OUTPUT']

@@ -10,6 +10,8 @@ This is a pytest plugin to collect and print a summary of all the warnings encou
 # Usage 
 
     pytest --output <output_file> <file_to_test>
+    or
+    CAPTURE_WARNINGS_OUTPUT=<output_file> pytest <files_to_test>
 
 
 # Flake8 Format
