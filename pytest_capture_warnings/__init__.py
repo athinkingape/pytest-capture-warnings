@@ -127,8 +127,10 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config=None):
                 }
             )
 
-            # How we format the warnings
-            # <filename/path>:<line number>:<character number> <warning message>
+            # How we format the warnings: pylint parseable format
+            # {path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+            # Always:
+            # {path}:{line}: [W0513(warning), ] {msg}
 
             if "with_traceback" in serialized_warning:
                 del serialized_warning["with_traceback"]
@@ -136,7 +138,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config=None):
 
         with open(output_path, "w") as f:
             for i in warnings_as_json:
-                f.write(f'{i["path"]}:{i["lineno"]}:1:{i["warning_message"]}')
+                f.write(f'{i["path"]}:{i["lineno"]}: [W0513(warning), ] {i["warning_message"]}')
                 f.write("\n")
     else:
         # nothing, clear file
